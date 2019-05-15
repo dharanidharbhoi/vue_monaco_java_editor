@@ -26,6 +26,15 @@
             this.$emit('delete-page')
           },
           savePage(){
+             // this.$emit('save-page');
+              const fs = require('fs');
+              const content = window.editor.getValue();
+             // var page = this.pages[this.index];
+               try {
+              const data = fs.writeFileSync('C:/Portware/data/workspace/autorouting/Dharani.java', content);
+            } catch (error) {
+              
+            } 
 
           },
           showEditor () {
@@ -77,7 +86,7 @@
       }
     });
 
-    monaco.editor.create(document.getElementById("container"), {
+    window.editor = monaco.editor.create(document.getElementById("container"), {
       value: "",
       language: "java",
       theme: "vs-dark",
