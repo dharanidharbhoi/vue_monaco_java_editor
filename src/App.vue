@@ -1,6 +1,6 @@
 <template>
       <div id="app">
-          <Notebook @change-page="changePage" @new-page="newPage" :pages="pages" :activePage="index" />
+          <Notebook @change-page="changePage" @new-page="newPage" :pages="pages" :activePage="index" /> 
           <Page @save-page="savePage" @delete-page="deletePage" :page="pages[index]" />
       </div>
     </template>
@@ -33,9 +33,9 @@
         savePage () {
             const fs = require('fs')
             var page = this.pages[this.index]
-            const content = page.content
+           // const content = page.content
             try {
-              const data = fs.writeFileSync('C:/VueApplication/VueFirstDemo/electron_vue_example/'+ page.title+'.java', content)
+              //const data = fs.writeFileSync('C:/VueApplication/VueFirstDemo/electron_vue_example/'+ page.title+'.java', content)
             } catch (error) {
               console.error(error)
             }            
