@@ -3,9 +3,9 @@
             <div >
                 <label for="title">Title</label>
                 <input type="text" v-model="page.title" class="title" name="title" placeholder="Enter a title" />
-                <label for="content">Content</label>
                 <div id="container"> </div>
               <!--  <textarea class="content" name="content" v-model="page.content" placeholder="Enter some content"></textarea> -->
+                <button @click="showEditor()">Show Editor</button>
                 <button @click="deletePage()">Delete Page</button>
                 <button @click="savePage()">Save Page</button>
             </div>
@@ -25,12 +25,11 @@
           deletePage () {
             this.$emit('delete-page')
           },
-          savePage () {
-            this.$emit('save-page')
-          }
-        }, 
-        mounted(){
-                 monaco.languages.registerCompletionItemProvider("java", {
+          savePage(){
+
+          },
+          showEditor () {
+             monaco.languages.registerCompletionItemProvider("java", {
       // eslint-disable-next-line no-unused-vars
       provideCompletionItems: (model, position) => {
         return [
@@ -84,6 +83,9 @@
       theme: "vs-dark",
       fontSize: "25px"
     });
+              
+          //  this.$emit('save-page')
+          }
         }
       }
     </script>
@@ -135,6 +137,7 @@
             color: white;
             font-size: 1rem;
             cursor: pointer;
+           
         }
 
         button:hover {
