@@ -1,7 +1,8 @@
 <template>
         <div class="page">
-            <div >
-                <label for="title">Title</label>
+            <div v-if="page">
+              
+                <label>Title: </label>
                 <input type="text" v-model="page.title" class="title" name="title" placeholder="Enter a title" />
                 <div id="container"> </div>
               <!--  <textarea class="content" name="content" v-model="page.content" placeholder="Enter some content"></textarea> -->
@@ -9,9 +10,9 @@
                 <button @click="deletePage()">Delete Page</button>
                 <button @click="savePage()">Save Page</button>
             </div>
-          <!--  <div v-else>
+          <div v-else>
                 <h1>&larr; To start, create a new page!</h1>
-            </div> -->
+          </div>
         </div>
     </template>
 
@@ -29,11 +30,12 @@
              // this.$emit('save-page');
               const fs = require('fs');
               const content = window.editor.getValue();
+              console.info(this.page.title);
              // var page = this.pages[this.index];
                try {
-              const data = fs.writeFileSync('C:/Portware/data/workspace/autorouting/Dharani.java', content);
+              const data = fs.writeFileSync('C:/Portware/data/workspace/autorouting/'+this.page.title+'.java', content);
             } catch (error) {
-              
+              console.error(error);
             } 
 
           },
@@ -87,7 +89,7 @@
     });
 
     window.editor = monaco.editor.create(document.getElementById("container"), {
-      value: "",
+      value: "qwert",
       language: "java",
       theme: "vs-dark",
       fontSize: "25px"
@@ -124,12 +126,15 @@
             resize: vertical;
             font-size: 1.5rem;
             padding: 0.5rem;
-            height: 20rem;
+            height: 50rem;
         }
 
         .title {
-            font-size: 2rem;
+            margin: 10px;
+            font-size: 1rem;
             padding: 0.5rem 1rem;
+            width: 25%;
+
         }
 
         label {
@@ -146,6 +151,8 @@
             color: white;
             font-size: 1rem;
             cursor: pointer;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
            
         }
 
@@ -154,8 +161,9 @@
         }
 
         #container {
-            height: 30rem;
-            width: 50rem;
+            height: 85%;
+            width: 75%;
+            position: absolute;
         }
 
     </style>

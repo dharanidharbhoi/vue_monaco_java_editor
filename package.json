@@ -15,7 +15,9 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "monaco-editor": "^0.17.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "yarn": "^1.16.0",
+    "yarn-install": "^1.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",
